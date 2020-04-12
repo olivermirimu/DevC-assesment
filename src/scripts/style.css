@@ -1,0 +1,89 @@
+body {
+  color: white;
+  background-color: #343a34;
+}
+
+[data-go-estimate] {
+  margin: 1em;
+  margin-left: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.entry-section,
+.results {
+  background-color: aliceblue;
+  color: black;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.form-group {
+  margin-right: 2em;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+small {
+  color: #ffffff;
+  font-size: 0.7em;
+}
+
+.severeImpact {
+  color: red;
+}
+
+.input-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  text-align: center;
+  margin: 2rem;
+  padding: 0.5em;
+}
+
+/* Bootstripped */
+.card-header:first-child {
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0, 0, 0, .03);
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.card-header-tabs {
+  margin-right: -.625rem;
+  margin-bottom: -.75rem;
+  margin-left: -.625rem;
+  border-bottom: 0;
+}
