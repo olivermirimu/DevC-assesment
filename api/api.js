@@ -14,7 +14,7 @@ const dataRouter = require('./routes/dataRoutes')(Data, Logs);
 
 const app = express();
 const port = 3500;
-const mongoUri = 'mongodb://heroku_2kxqlgs0:qq1193v2tgejm9spcnp4bkdkv6@ds111113.mlab.com:11113/heroku_2kxqlgs0';
+const mongoUri = 'mongodb://heroku_5jsl48cn:ch64p332mgcqhl9hjo3krtk47p@ds015942.mlab.com:15942/heroku_5jsl48cn';
 // eslint-disable-next-line no-unused-vars
 const db = mongoose.connect(mongoUri, {
   useNewUrlParser: true,
