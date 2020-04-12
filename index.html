@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Covid-19 Estimator</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="This is an impact estimate calculator for Covid-19" />
+  <!-- manifest related -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./src/apple-touch-icon.png">
+  <link rel="icon" type="/srcimage/png" sizes="32x32" href="./src/icons/favicon-32x32.png">
+  <link rel="icon" type="/srcimage/png" sizes="16x16" href="./src/icons/favicon-16x16.png">
+  <link rel="manifest" href="./src/manifest.json">
+  <link rel="mask-icon" href="./src/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <!-- ******* -->
+  <link rel="stylesheet" href="./src/scripts/stripped.css">
+  <link rel="stylesheet" href="./src/scripts/style.css">
+  <script defer src="./src/main.mjs"></script>
+</head>
+
+<body>
+  <main>
+    <header class="container-fluid bg-primary">
+      <div class="navbar-brand">
+        <h1>Covid-19 Estimator</h1>
+      </div>
+    </header>
+    <section class="container entry-section">
+      <h2>Enter Your Data Below</h2>
+      <form action="" class="input-form" id="entryForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="data-population">Population: </label>
+            <input type="text" class="form-control" id="data-population" placeholder="Population" data-population>
+          </div>
+          <div class="form-group">
+            <label for="data-time-to-elapse">Time To Elapse: </label>
+            <input id="data-time-to-elapse" type="text" class="form-control" placeholder="Time To Elapse"
+              data-time-to-elapse>
+          </div>
+          <div class="form-group">
+            <label for="data-reported-cases">Reported Cases: </label>
+            <input id="data-reported-cases" type="text" class="form-control" placeholder="Reported Cases"
+              data-reported-cases>
+          </div>
+          <div class="form-group">
+            <label for="data-total-hospital-beds">Hospital Beds: </label>
+            <input id="data-total-hospital-beds" type="text" class="form-control" placeholder="Hospital Beds"
+              data-total-hospital-beds>
+          </div>
+          <div class="form-group">
+            <label for="periodType">Period Type: </label>
+            <select class="form-control" id="periodType" form="entryForm" id="periodType" data-period-type>
+              <option value="months">Months</option>
+              <option value="weeks">Weeks</option>
+              <option value="days">Days</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn bg-dark" type="submit" data-go-estimate onclick="getEstimates();">Generate Estimates</button>
+      </form>
+    </section>
+    <h2>Our Estimations Are As Follows</h2>
+    <section class="container results" id="show-results">
+      <div class="card-header">
+        <div class="nav nav-tabs card-header-tabs">
+          <button class="nav-item btn bg-warn" onclick="showImpact()">Impact</button>
+          <button class="nav-item btn bg-danger" onclick="showSevereImpact()">Severe Impact</button>
+        </div>
+      </div>
+      <form id="impact" class="impact">
+        <h3>Impact</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="currentlyInfected">Currently Infected</label>
+            <input name="currentlyInfected" id="currentlyInfected" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="infections"> Infections Within Period</label>
+            <input id="infections" name="infections" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="severeCases">Severe Cases</label>
+            <input id="severeCases" name="severeCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="hospitalBeds">Hospital Beds Required</label>
+            <input id="hospitalBeds" name="hospitalBeds" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ICUCases">ICU Necessary Cases</label>
+            <input id="ICUCases" name="ICUCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ventilatorCases">Ventilator Necessary Cases</label>
+            <input id="ventilatorCases" name="ventilatorCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="dollarsInFlight">Economic Damage (Dollars)</label>
+            <input id="dollarsInFlight" name="dollarsInFlight" type="text" class="form-control">
+          </div>
+        </div>
+      </form>
+      <form id="severeImpact" class="severeImpact hidden">
+        <h3>Severe Impact</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="currentlyInfected">Currently Infected</label>
+            <input name="currentlyInfected" id="currentlyInfected" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="infections"> Infections Within Period</label>
+            <input id="infections" name="infections" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="severeCases">Severe Cases</label>
+            <input id="severeCases" name="severeCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="hospitalBeds">Hospital Beds Required</label>
+            <input id="hospitalBeds" name="hospitalBeds" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ICUCases">ICU Necessary Cases</label>
+            <input id="ICUCases" name="ICUCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="ventilatorCases">Ventilator Necessary Cases</label>
+            <input id="ventilatorCases" name="ventilatorCases" type="text" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="dollarsInFlight">Economic Damage (Dollars)</label>
+            <input id="dollarsInFlight" name="dollarsInFlight" type="text" class="form-control">
+          </div>
+        </div>
+      </form>
+
+    </section>
+  </main>
+  <footer class="bg-dark">
+    <div class="social">
+    </div>
+    <div class="copyright">
+      <small>&copy olivermirimu</small>
+    </div>
+  </footer>
+</body>
+
+</html>
